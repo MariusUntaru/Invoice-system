@@ -39,35 +39,7 @@ public class TestDataFactory {
                 .description("Invoice description " + id)
                 .build();
     }
-
-    public static Board getSingleBoard(Long id, Long invoicesCount){
-        return Board.builder()
-                .id(id)
-                .title("Board " + id)
-                .noticeList(getInvoiceList(invoicesCount))
-                .build();
-    }
-
-    public static List<Board> getBoardList(Long boardsCount, Long invoicesCount){
-        return LongStream.rangeClosed(1, boardsCount)
-                .mapToObj(id -> getSingleBoard(id, invoicesCount))
-                .collect(Collectors.toList());
-    }
-
-    public static BoardDTO getSingleBoardDTO(Long id, Long invoicesCount){
-        return BoardDTO.builder()
-                .id(id)
-                .title("Board " + id)
-                .invoiceList(getInvoiceListDTO(invoicesCount))
-                .build();
-    }
-
-    public static List<BoardDTO> getBoardListDTO(Long boardsCount, Long invoicesCount){
-        return LongStream.rangeClosed(1, boardsCount)
-                .mapToObj(id -> getSingleBoardDTO(id, invoicesCount))
-                .collect(Collectors.toList());
-    }
-
+    
     public static Vendor getSingleVendor(Long id){
         return Vendor.builder()
                 .id(id)

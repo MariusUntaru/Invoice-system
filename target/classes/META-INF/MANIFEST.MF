@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 16
+Implementation-Title: invoicesystem
+Implementation-Version: 0.0.10
+Created-By: Maven Integration for Eclipse
+
