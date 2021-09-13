@@ -38,7 +38,7 @@ jobs:
       - name: SonarCloud Scan
         run: mvn -B clean verify -Psonar -Dsonar.login=MariusUntaru@github
         env:
-          SONAR_TOKEN: 88e8e9821b75ec19d4529eae97710a556eeacc57   
+          SONAR_TOKEN: "88e8e9821b75ec19d4529eae97710a556eeacc57"   
           
   artifact:
     name: Publish - GitHub Packages
@@ -54,7 +54,7 @@ jobs:
       - name: Publish artifact on GitHub Packages
         run: mvn -B clean deploy -DskipTests
         env: 
-          SONAR_TOKEN: 88e8e9821b75ec19d4529eae97710a556eeacc57
+          "@MariusUntaru:registry": "https://npm.pkg.github.com"
 
 
 
@@ -63,12 +63,12 @@ jobs:
     runs-on: ubuntu-18.04
     needs: [test, sonar]
     env:
-      REPO: ${{ secrets.DOCKER_REPO }}
+      REPO: "mariusuntaru96/invoice-system"
 
     steps:
       - uses: actions/checkout@v1
       - name: Login to Docker Hub
-        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
+        run: docker login -u "mariusuntaru96" -p "bnK4tBU!frtXN2MHKAHzia"
       - name: Build Docker image
         run: docker build -t $REPO:latest -t $REPO:${GITHUB_SHA::8} .
       - name: Publish Docker image
